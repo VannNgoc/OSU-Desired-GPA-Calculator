@@ -4,9 +4,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 
-
-public class DesiredGPAView extends JFrame implements ActionListener, ItemListener{
-	
+public class DesiredGPAView extends JFrame implements ActionListener, ItemListener
+{
 	private static final long serialVersionUID = -2899769176308655521L;
 
 	/*
@@ -25,8 +24,6 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 	private final String[] letterGrades = {"","A","A-","B+","B","B-","C+","C","C-","D+","D","E"};
 	private ArrayList <JPanel> classes = new ArrayList<JPanel>();
 	private ArrayList <JTextField> classNameArray = new ArrayList<JTextField>();
-		
-
 
 	/*
 	 * following are needed for calculations
@@ -37,37 +34,48 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 	private int [] upperBounds;
 	private int [] lowerBounds;
 	
-	public ArrayList<JComboBox<String>> getClassCredits() {
+	public ArrayList<JComboBox<String>> getClassCredits() 
+	{
 		return classCredits;
 	}
-	public ArrayList<JTextField> getClassNameArray() {
+	
+	public ArrayList<JTextField> getClassNameArray() 
+	{
 		return classNameArray;
 	}
-	public JTextField gettGPALimit() {
+	
+	public JTextField gettGPALimit() 
+	{
 		return tGPALimit;
 	}
 
-	public int[] getUpperBounds() {
+	public int[] getUpperBounds() 
+	{
 		return upperBounds;
 	}
 
-	public int[] getLowerBounds() {
+	public int[] getLowerBounds() 
+	{
 		return lowerBounds;
 	}
 	
-	public JTextField gettDesiredGPA() {
+	public JTextField gettDesiredGPA() 
+	{
 		return tDesiredGPA;
 	}
 
-	public JTextField gettCurrentGPA() {
+	public JTextField gettCurrentGPA() 
+	{
 		return tCurrentGPA;
 	}
 
-	public JTextField gettTotalCred() {
+	public JTextField gettTotalCred() 
+	{
 		return tTotalCred;
 	}
 
-	public DesiredGPAView(){
+	public DesiredGPAView()
+	{
 		//titles the window
 		super ("Desired GPA");
 		
@@ -217,16 +225,16 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 		this.pack();
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setResizable(true);
-	    this.setVisible(true);
-		
-		
+	    this.setVisible(true);	
 	}
 
-	public void registerObserver(DesiredGPAController controller) {
+	public void registerObserver(DesiredGPAController controller) 
+	{
 	      this.controller = controller;
-	    }
+	}
 	
-	public void updateAddClass(){
+	public void updateAddClass()
+	{
 		JPanel classNum = new JPanel ();
 		classNum.setLayout(new BoxLayout(classNum, BoxLayout.PAGE_AXIS));
 		classNum.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -266,52 +274,67 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 		pClasses.add(classNum);
 		classes.add(classNum);
 		makeBoundArray();
+		
 		/*
 		 * following makes it so user can't enter "" for credits and hit calculate
 		 */
 		int i  = 0;
-		for (JComboBox <String> classCredits : classCredits) {
-			if(!classCredits.getSelectedItem().equals("")){
+		for (JComboBox <String> classCredits : classCredits) 
+		{
+			if(!classCredits.getSelectedItem().equals(""))
+			{
 				i++;
 			}
 		}
-		if(i == classCredits.size()){
+		
+		if(i == classCredits.size())
+		{
 			bCalc.setEnabled(true);
-		}else{
+		}
+		else
+		{
 			bCalc.setEnabled(false);
 		}
 		
 		/*
 		 * disables remove class button if there is only one class
 		 */
-		if(pClasses.getComponentCount() > 1){
+		if(pClasses.getComponentCount() > 1)
+		{
 			bRem.setEnabled(true);
 		}
 		
-		if(pClasses.getComponentCount() >= 5){
+		if(pClasses.getComponentCount() >= 5)
+		{
 			bAdd.setEnabled(false);
 		}
+		
 		/*
 		 * resizes windows up to 3 classes then stops afterwards.
 		 */
-		
-		if(pClasses.getComponentCount() <= 3){
-			this.setVisible(true);
-			
-		}
-		
-	}
-	
-	public void updateRemClass(){
-		pClasses.remove(pClasses.getComponentCount()-1);
-		if(pClasses.getComponentCount() <= 1){
-			bRem.setEnabled(false);
-		}
-		pClasses.validate();
-		pClasses.repaint();
-		if(pClasses.getComponentCount() <= 3){
+		if(pClasses.getComponentCount() <= 3)
+		{
 			this.setVisible(true);	
 		}
+	}
+	
+	public void updateRemClass()
+	{
+		pClasses.remove(pClasses.getComponentCount()-1);
+		
+		if(pClasses.getComponentCount() <= 1)
+		{
+			bRem.setEnabled(false);
+		}
+		
+		pClasses.validate();
+		pClasses.repaint();
+		
+		if(pClasses.getComponentCount() <= 3)
+		{
+			this.setVisible(true);	
+		}
+		
 		classes.remove(classes.size()-1);
 		ubGrades.remove(ubGrades.size()-1);
 		lbGrades.remove(lbGrades.size()-1);
@@ -319,132 +342,208 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 		//fixes the bug where if you remove a class that has a credit selected the calculate button won't be disabled.
 		classCredits.remove(classCredits.size()-1);
 		classNameArray.remove(classNameArray.size()-1);
+		
 		int i = 0;
-		for (JComboBox <String> classCredits : classCredits) {
-			if(!classCredits.getSelectedItem().equals("")){
+		for (JComboBox <String> classCredits : classCredits) 
+		{
+			if(!classCredits.getSelectedItem().equals(""))
+			{
 				i++;
 			}
 		}
-		if(i!=0){
+		
+		if(i!=0)
+		{
 			bCalc.setEnabled(true);
-		}else{
+		}
+		else
+		{
 			bCalc.setEnabled(false);
 		}
-		if(pClasses.getComponentCount() < 5){
+		
+		if(pClasses.getComponentCount() < 5)
+		{
 			bAdd.setEnabled(true);
 		}
 	}
 	
-	public void updateCalc(StringBuilder s){
+	public void updateCalc(StringBuilder s)
+	{
 		aOutcomes.setText(s.toString());
 	}
 	
-	public void updateCalc(String s){
+	public void updateCalc(String s)
+	{
 		aOutcomes.setText(s.toString());
 	}
 	
-	public void makeBoundArray(){
+	public void makeBoundArray()
+	{
 		upperBounds = new int[ubGrades.size()];
-		for (JComboBox<String> upper : ubGrades) {
-			 if(upper.getSelectedItem().toString() == "A" || upper.getSelectedItem().toString() == ""){
+		for (JComboBox<String> upper : ubGrades) 
+		{
+			if(upper.getSelectedItem().toString() == "A" || upper.getSelectedItem().toString() == "")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 0;
-			 }else if(upper.getSelectedItem().toString() == "A-"){
+			}
+			else if(upper.getSelectedItem().toString() == "A-")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 1;
-			 }else if(upper.getSelectedItem().toString() == "B+"){
+			}
+			else if(upper.getSelectedItem().toString() == "B+")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 2;
-			 }else if(upper.getSelectedItem().toString() == "B"){
+			}
+			else if(upper.getSelectedItem().toString() == "B")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 3;
-			 }else if(upper.getSelectedItem().toString() == "B-"){
+			}
+			else if(upper.getSelectedItem().toString() == "B-")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 4;
-			 }else if(upper.getSelectedItem().toString() == "C+"){
+			}
+			else if(upper.getSelectedItem().toString() == "C+")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 5;
-			 }else if(upper.getSelectedItem().toString() == "C"){
+			}
+			else if(upper.getSelectedItem().toString() == "C")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 6;
-			 }else if(upper.getSelectedItem().toString() == "C-"){
+			}
+			else if(upper.getSelectedItem().toString() == "C-")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 7;
-			 }else if(upper.getSelectedItem().toString() == "D+"){
+			}
+			else if(upper.getSelectedItem().toString() == "D+")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 8;
-			 }else if(upper.getSelectedItem().toString() == "D"){
+			}
+			else if(upper.getSelectedItem().toString() == "D")
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 9;
-			 }else{
+			}
+			else
+			{
 				 upperBounds[ubGrades.indexOf(upper)] = 10;
-			 }
+			}
 		}
-		 lowerBounds =  new int [lbGrades.size()];
-			for (JComboBox<String> lower : lbGrades) {
-				 if(lower.getSelectedItem().toString() == "A"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 0;
-				 }else if(lower.getSelectedItem().toString() == "A-"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 1;
-				 }else if(lower.getSelectedItem().toString() == "B+"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 2;
-				 }else if(lower.getSelectedItem().toString() == "B"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 3;
-				 }else if(lower.getSelectedItem().toString() == "B-"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 4;
-				 }else if(lower.getSelectedItem().toString() == "C+"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 5;
-				 }else if(lower.getSelectedItem().toString() == "C"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 6;
-				 }else if(lower.getSelectedItem().toString() == "C-"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 7;
-				 }else if(lower.getSelectedItem().toString() == "D+"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 8;
-				 }else if(lower.getSelectedItem().toString() == "D"){
-					 lowerBounds[lbGrades.indexOf(lower)] = 9;
-				 }else{
-					 lowerBounds[lbGrades.indexOf(lower)] = 10;
-				 }
+		
+		lowerBounds =  new int [lbGrades.size()];
+		for (JComboBox<String> lower : lbGrades) 
+		{
+			if(lower.getSelectedItem().toString() == "A")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 0;
 			}
-			
-			int checkBounds = 0;
-			for(int i= 0;  i < lowerBounds.length; i++){
-				if(lowerBounds [i] - upperBounds[i] >= 0){
-					checkBounds++;
-				}
+			else if(lower.getSelectedItem().toString() == "A-")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 1;
 			}
-			if(checkBounds < lowerBounds.length){
-				bCalc.setEnabled(false);
-				updateCalc("error in bounds");
-			}else{
-				bCalc.setEnabled(true);
-				updateCalc("");
+			else if(lower.getSelectedItem().toString() == "B+")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 2;
 			}
+			else if(lower.getSelectedItem().toString() == "B")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 3;
+			}
+			else if(lower.getSelectedItem().toString() == "B-")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 4;
+			}
+			else if(lower.getSelectedItem().toString() == "C+")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 5;
+			}
+			else if(lower.getSelectedItem().toString() == "C")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 6;
+			}
+			else if(lower.getSelectedItem().toString() == "C-")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 7;
+			}
+			else if(lower.getSelectedItem().toString() == "D+")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 8;
+			}
+			else if(lower.getSelectedItem().toString() == "D")
+			{
+				 lowerBounds[lbGrades.indexOf(lower)] = 9;
+			}
+			else{
+				 lowerBounds[lbGrades.indexOf(lower)] = 10;
+			}
+		}
+		
+		int checkBounds = 0;
+		for(int i= 0;  i < lowerBounds.length; i++)
+		{
+			if(lowerBounds [i] - upperBounds[i] >= 0)
+			{
+				checkBounds++;
+			}
+		}
+		
+		if(checkBounds < lowerBounds.length)
+		{
+			bCalc.setEnabled(false);
+			updateCalc("error in bounds");
+		}
+		else
+		{
+			bCalc.setEnabled(true);
+			updateCalc("");
+		}
 	}
 	
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		Object source = e.getSource();
-		if(source == this.bAdd){
+		if(source == this.bAdd)
+		{
 			this.controller.processAddClass();
-		}else if(source == this.bRem){
+		}
+		else if(source == this.bRem)
+		{
 			this.controller.processRemClass();		
-		}else if (source == this.bCalc) {
+		}
+		else if (source == this.bCalc) 
+		{
 			makeBoundArray();
 			this.controller.processCalculate();
 		}
 	}
 
 	@Override
-	public void itemStateChanged(ItemEvent e) {
+	public void itemStateChanged(ItemEvent e) 
+	{
 		Object source = e.getSource();
-		if(classCredits.contains(source)){
+		if(classCredits.contains(source))
+		{
 			int i = 0;
-			for (JComboBox <String> classCredits : classCredits) {
-				if(!classCredits.getSelectedItem().equals("")){
+			for (JComboBox <String> classCredits : classCredits) 
+			{
+				if(!classCredits.getSelectedItem().equals(""))
+				{
 					i++;
 				}
 			}
-			if(i == classCredits.size()){
+			
+			if(i == classCredits.size())
+			{
 				bCalc.setEnabled(true);
-			}else{
+			}
+			else
+			{
 				bCalc.setEnabled(false);
 			}
-		}else if(ubGrades.contains(source) || lbGrades.contains(source)){
+		}
+		else if(ubGrades.contains(source) || lbGrades.contains(source))
+		{
 			makeBoundArray();
 		}
 	}
-
-
 }
