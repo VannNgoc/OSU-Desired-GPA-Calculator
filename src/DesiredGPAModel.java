@@ -69,8 +69,14 @@ public class DesiredGPAModel
 		return boundedArray;
 	}
 
-	public void seeLetterArray(int[] upper, int[] lower, ArrayList<JTextField> classNameArray,
-			ArrayList<JComboBox<String>> Credits, JTextField limitGPA, JTextField desiredGPA, JTextField currentCuma,
+	public void seeLetterArray(
+			int[] upper,
+			int[] lower,
+			ArrayList<JTextField> classNameArray,
+			ArrayList<JComboBox<String>> Credits,
+			JTextField limitGPA,
+			JTextField desiredGPA,
+			JTextField currentCuma,
 			JTextField credTaken)
 	{
 		includeArray.clear();
@@ -133,7 +139,13 @@ public class DesiredGPAModel
 		{
 			boundLetterArray.add(boundArray(upper[i], lower[i]));
 		}
-		combinations(boundLetterArray, boundLetterArray.size(), Credits, cLimitGPA, cDesiredGPA, cCurrentCuma,
+		combinations(
+				boundLetterArray,
+				boundLetterArray.size(),
+				Credits,
+				cLimitGPA,
+				cDesiredGPA,
+				cCurrentCuma,
 				cCredTaken);
 
 		if (includeArray.isEmpty())
@@ -141,8 +153,9 @@ public class DesiredGPAModel
 			this.outcomes.append("Sorry not possible!");
 		} else
 		{
-			this.outcomes.append("THERE ARE " + includeArray.size() + " POSSIBILITIES!"
-					+ "\n______________________________________________________________\n");
+			this.outcomes.append(
+					"THERE ARE " + includeArray.size() + " POSSIBILITIES!"
+							+ "\n______________________________________________________________\n");
 			for (int i = 0; i < includeArray.size(); i++)
 			{
 				for (int j = 0; j < classNames.size(); j++)
@@ -152,14 +165,21 @@ public class DesiredGPAModel
 				double hypoCuma = cumaGPAArray.get(i);
 				double hypoSem = semGPAArray.get(i);
 				this.outcomes.append("\nHypothetical Semester GPA: " + truncateDecimal(hypoSem, 3) + "\n");
-				this.outcomes.append("Hypothetical Cumalative GPA: " + truncateDecimal(hypoCuma, 3)
-						+ "\n______________________________________________________________\n");
+				this.outcomes.append(
+						"Hypothetical Cumalative GPA: " + truncateDecimal(hypoCuma, 3)
+								+ "\n______________________________________________________________\n");
 			}
 		}
 	}
 
-	public void combinations(ArrayList<ArrayList<String>> boundedArrays, int size, ArrayList<JComboBox<String>> Credits,
-			double limitGPA, double desiredGPA, double currentCuma, int credTaken)
+	public void combinations(
+			ArrayList<ArrayList<String>> boundedArrays,
+			int size,
+			ArrayList<JComboBox<String>> Credits,
+			double limitGPA,
+			double desiredGPA,
+			double currentCuma,
+			int credTaken)
 	{
 		if (size == 1)
 		{
@@ -247,8 +267,13 @@ public class DesiredGPAModel
 		}
 	}
 
-	private double calculateGPA(ArrayList<String> temp, ArrayList<JComboBox<String>> Credits, double limitGPA,
-			double cDesiredCuma, double cCurrentCuma, int cTotalCred)
+	private double calculateGPA(
+			ArrayList<String> temp,
+			ArrayList<JComboBox<String>> Credits,
+			double limitGPA,
+			double cDesiredCuma,
+			double cCurrentCuma,
+			int cTotalCred)
 	{
 		ArrayList<Double> actualCredArray = new ArrayList<Double>();
 		double cumaGPA;

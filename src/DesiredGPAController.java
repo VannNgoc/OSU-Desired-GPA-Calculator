@@ -21,9 +21,15 @@ public class DesiredGPAController
 
 	public void processCalculate()
 	{
-		this.model.seeLetterArray(this.view.getUpperBounds(), this.view.getLowerBounds(), this.view.getClassNameArray(),
-				this.view.getClassCredits(), this.view.gettGPALimit(), this.view.gettDesiredGPA(),
-				this.view.gettCurrentGPA(), this.view.gettTotalCred());
+		this.model.seeLetterArray(
+				this.view.getUpperBounds(),
+				this.view.getLowerBounds(),
+				this.view.getClassNameArray(),
+				this.view.getClassCredits(),
+				this.view.gettGPALimit(),
+				this.view.gettDesiredGPA(),
+				this.view.gettCurrentGPA(),
+				this.view.gettTotalCred());
 		this.view.updateCalc(this.model.outcomes());
 	}
 }
