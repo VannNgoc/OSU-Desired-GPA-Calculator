@@ -24,7 +24,8 @@ public class DesiredGPAModel
 		if (x > 0)
 		{
 			return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_FLOOR);
-		} else
+		}
+		else
 		{
 			return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
 		}
@@ -41,7 +42,8 @@ public class DesiredGPAModel
 		{
 			Double.parseDouble(str);
 			return true;
-		} catch (NumberFormatException e)
+		}
+		catch (NumberFormatException e)
 		{
 			return false;
 		}
@@ -53,7 +55,8 @@ public class DesiredGPAModel
 		{
 			Integer.parseInt(str);
 			return true;
-		} catch (NumberFormatException e)
+		}
+		catch (NumberFormatException e)
 		{
 			return false;
 		}
@@ -95,7 +98,8 @@ public class DesiredGPAModel
 			if (className.equals(""))
 			{
 				className = "Class " + (z + 1) + ": ";
-			} else
+			}
+			else
 			{
 				className = classNameArray.get(z).getText() + ": ";
 			}
@@ -105,7 +109,8 @@ public class DesiredGPAModel
 		if (desiredGPA.getText().equals(""))
 		{
 			cDesiredGPA = 0.0;
-		} else
+		}
+		else
 		{
 			cDesiredGPA = Double.parseDouble(desiredGPA.getText());
 		}
@@ -113,7 +118,8 @@ public class DesiredGPAModel
 		if (limitGPA.getText().equals(""))
 		{
 			cLimitGPA = 4.0;
-		} else
+		}
+		else
 		{
 			cLimitGPA = Double.parseDouble(limitGPA.getText());
 		}
@@ -121,7 +127,8 @@ public class DesiredGPAModel
 		if (currentCuma.getText().equals(""))
 		{
 			cCurrentCuma = 0.0;
-		} else
+		}
+		else
 		{
 			cCurrentCuma = Double.parseDouble(currentCuma.getText());
 		}
@@ -129,7 +136,8 @@ public class DesiredGPAModel
 		if (credTaken.getText().equals(""))
 		{
 			cCredTaken = 0;
-		} else
+		}
+		else
 		{
 			cCredTaken = Integer.parseInt(credTaken.getText());
 		}
@@ -151,7 +159,8 @@ public class DesiredGPAModel
 		if (includeArray.isEmpty())
 		{
 			this.outcomes.append("Sorry not possible!");
-		} else
+		}
+		else
 		{
 			this.outcomes.append(
 					"THERE ARE " + includeArray.size() + " POSSIBILITIES!"
@@ -192,7 +201,8 @@ public class DesiredGPAModel
 					calculateGPA(temp, Credits, limitGPA, desiredGPA, currentCuma, credTaken);
 				}
 			}
-		} else if (size == 2)
+		}
+		else if (size == 2)
 		{
 			for (String grade0 : boundedArrays.get(0))
 			{
@@ -204,7 +214,8 @@ public class DesiredGPAModel
 					calculateGPA(temp, Credits, limitGPA, desiredGPA, currentCuma, credTaken);
 				}
 			}
-		} else if (size == 3)
+		}
+		else if (size == 3)
 		{
 			for (String grade0 : boundedArrays.get(0))
 			{
@@ -220,7 +231,8 @@ public class DesiredGPAModel
 					}
 				}
 			}
-		} else if (size == 4)
+		}
+		else if (size == 4)
 		{
 			for (String grade0 : boundedArrays.get(0))
 			{
@@ -240,7 +252,8 @@ public class DesiredGPAModel
 					}
 				}
 			}
-		} else if (size == 5)
+		}
+		else if (size == 5)
 		{
 			for (String grade0 : boundedArrays.get(0))
 			{
@@ -287,7 +300,8 @@ public class DesiredGPAModel
 			{
 				credNum = 0;
 				creditHours.add(credNum);
-			} else if (isDouble(credString))
+			}
+			else if (isDouble(credString))
 			{
 				credNum = Integer.parseInt(credString);
 				semCredTot += credNum;
@@ -300,34 +314,44 @@ public class DesiredGPAModel
 			if (grade.equals(letterGrades[0]))
 			{
 				letterAsDouble = 4.0;
-			} else if (grade.equals(letterGrades[1]))
+			}
+			else if (grade.equals(letterGrades[1]))
 			{
 				letterAsDouble = 3.7;
-			} else if (grade.equals(letterGrades[2]))
+			}
+			else if (grade.equals(letterGrades[2]))
 			{
 				letterAsDouble = 3.3;
-			} else if (grade.equals(letterGrades[3]))
+			}
+			else if (grade.equals(letterGrades[3]))
 			{
 				letterAsDouble = 3.0;
-			} else if (grade.equals(letterGrades[4]))
+			}
+			else if (grade.equals(letterGrades[4]))
 			{
 				letterAsDouble = 2.7;
-			} else if (grade.equals(letterGrades[5]))
+			}
+			else if (grade.equals(letterGrades[5]))
 			{
 				letterAsDouble = 2.3;
-			} else if (grade.equals(letterGrades[6]))
+			}
+			else if (grade.equals(letterGrades[6]))
 			{
 				letterAsDouble = 2.0;
-			} else if (grade.equals(letterGrades[7]))
+			}
+			else if (grade.equals(letterGrades[7]))
 			{
 				letterAsDouble = 1.7;
-			} else if (grade.equals(letterGrades[8]))
+			}
+			else if (grade.equals(letterGrades[8]))
 			{
 				letterAsDouble = 1.3;
-			} else if (grade.equals(letterGrades[9]))
+			}
+			else if (grade.equals(letterGrades[9]))
 			{
 				letterAsDouble = 1.0;
-			} else
+			}
+			else
 			{
 				letterAsDouble = 0.0;
 			}

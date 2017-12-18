@@ -293,7 +293,8 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 		if (i == classCredits.size())
 		{
 			bCalc.setEnabled(true);
-		} else
+		}
+		else
 		{
 			bCalc.setEnabled(false);
 		}
@@ -358,7 +359,8 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 		if (i != 0)
 		{
 			bCalc.setEnabled(true);
-		} else
+		}
+		else
 		{
 			bCalc.setEnabled(false);
 		}
@@ -387,34 +389,44 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 			if (upper.getSelectedItem().toString() == "A" || upper.getSelectedItem().toString() == "")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 0;
-			} else if (upper.getSelectedItem().toString() == "A-")
+			}
+			else if (upper.getSelectedItem().toString() == "A-")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 1;
-			} else if (upper.getSelectedItem().toString() == "B+")
+			}
+			else if (upper.getSelectedItem().toString() == "B+")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 2;
-			} else if (upper.getSelectedItem().toString() == "B")
+			}
+			else if (upper.getSelectedItem().toString() == "B")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 3;
-			} else if (upper.getSelectedItem().toString() == "B-")
+			}
+			else if (upper.getSelectedItem().toString() == "B-")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 4;
-			} else if (upper.getSelectedItem().toString() == "C+")
+			}
+			else if (upper.getSelectedItem().toString() == "C+")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 5;
-			} else if (upper.getSelectedItem().toString() == "C")
+			}
+			else if (upper.getSelectedItem().toString() == "C")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 6;
-			} else if (upper.getSelectedItem().toString() == "C-")
+			}
+			else if (upper.getSelectedItem().toString() == "C-")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 7;
-			} else if (upper.getSelectedItem().toString() == "D+")
+			}
+			else if (upper.getSelectedItem().toString() == "D+")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 8;
-			} else if (upper.getSelectedItem().toString() == "D")
+			}
+			else if (upper.getSelectedItem().toString() == "D")
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 9;
-			} else
+			}
+			else
 			{
 				upperBounds[ubGrades.indexOf(upper)] = 10;
 			}
@@ -426,34 +438,44 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 			if (lower.getSelectedItem().toString() == "A")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 0;
-			} else if (lower.getSelectedItem().toString() == "A-")
+			}
+			else if (lower.getSelectedItem().toString() == "A-")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 1;
-			} else if (lower.getSelectedItem().toString() == "B+")
+			}
+			else if (lower.getSelectedItem().toString() == "B+")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 2;
-			} else if (lower.getSelectedItem().toString() == "B")
+			}
+			else if (lower.getSelectedItem().toString() == "B")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 3;
-			} else if (lower.getSelectedItem().toString() == "B-")
+			}
+			else if (lower.getSelectedItem().toString() == "B-")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 4;
-			} else if (lower.getSelectedItem().toString() == "C+")
+			}
+			else if (lower.getSelectedItem().toString() == "C+")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 5;
-			} else if (lower.getSelectedItem().toString() == "C")
+			}
+			else if (lower.getSelectedItem().toString() == "C")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 6;
-			} else if (lower.getSelectedItem().toString() == "C-")
+			}
+			else if (lower.getSelectedItem().toString() == "C-")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 7;
-			} else if (lower.getSelectedItem().toString() == "D+")
+			}
+			else if (lower.getSelectedItem().toString() == "D+")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 8;
-			} else if (lower.getSelectedItem().toString() == "D")
+			}
+			else if (lower.getSelectedItem().toString() == "D")
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 9;
-			} else
+			}
+			else
 			{
 				lowerBounds[lbGrades.indexOf(lower)] = 10;
 			}
@@ -472,7 +494,8 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 		{
 			bCalc.setEnabled(false);
 			updateCalc("error in bounds");
-		} else
+		}
+		else
 		{
 			bCalc.setEnabled(true);
 			updateCalc("");
@@ -486,10 +509,12 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 		if (source == this.bAdd)
 		{
 			this.controller.processAddClass();
-		} else if (source == this.bRem)
+		}
+		else if (source == this.bRem)
 		{
 			this.controller.processRemClass();
-		} else if (source == this.bCalc)
+		}
+		else if (source == this.bCalc)
 		{
 			makeBoundArray();
 			this.controller.processCalculate();
@@ -514,11 +539,13 @@ public class DesiredGPAView extends JFrame implements ActionListener, ItemListen
 			if (i == classCredits.size())
 			{
 				bCalc.setEnabled(true);
-			} else
+			}
+			else
 			{
 				bCalc.setEnabled(false);
 			}
-		} else if (ubGrades.contains(source) || lbGrades.contains(source))
+		}
+		else if (ubGrades.contains(source) || lbGrades.contains(source))
 		{
 			makeBoundArray();
 		}
